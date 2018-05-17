@@ -1,0 +1,13 @@
+FROM sonarqube:latest
+
+MAINTAINER feiyyang <fei-yang.yang@keysight.com>
+
+# create plugin download location; so we can copy them later when SonarQube is start
+ENV PLUGIN_DIR /opt/sonarqube/extensions/plugins
+WORKDIR ${PLUGIN_DIR}
+
+# download plugins from:
+#add c++(Community) plugin
+RUN wget https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-0.9.7/sonar-cxx-plugin-0.9.7.jar
+
+WORKDIR /opt/sonarqube/
